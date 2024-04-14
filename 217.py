@@ -3,7 +3,6 @@ from typing import List
 class Solution:
     def containsDuplicate(nums: List[int]) -> bool:
         hashset = set()
-
         for n in nums:
             if n in hashset:
                 return True
@@ -28,7 +27,8 @@ class Solution:
         return False
 
 nums = [1, 2, 3, 4, 5, 1]
-
+print()
 print(f"Solution by hashMap: {Solution.containsDuplicate(nums)}")
 print(f"Solution by BruteForce: {Solution.containsDuplicateBruteForce(nums)}")
 print(f"Solution by Sorting: {Solution.containsDuplicateSort(nums)}")
+print()
