@@ -1,6 +1,10 @@
 from typing import List
 
 class Solution:
+    """
+    Solution with HashSet, check if item is already on hashset, if not store it, if yes return True
+    Time complexity: O(n)
+    """
     def containsDuplicate(nums: List[int]) -> bool:
         hashset = set()
         for n in nums:
@@ -9,6 +13,10 @@ class Solution:
             hashset.add(n)
         return False
     
+    """
+    Solution with BruteForce, for every item check the rest of the array for coincidences
+    Time complexity: O(n^2)
+    """
     def containsDuplicateBruteForce(nums: List[int]) -> bool:
         n = len(nums)
         for i in range(n - 1):
@@ -17,7 +25,10 @@ class Solution:
                     return True
         return False
 
-    
+    """
+    Solution with Sort, sort the array, compare each number with the next and if its equal return True
+    Time complexity: O(n)
+    """
     def containsDuplicateSort(nums: List[int]) -> bool:
         nums.sort()
         n = len(nums)
