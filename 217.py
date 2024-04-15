@@ -38,6 +38,7 @@ class Solution:
         return False
 
 nums = [1, 2, 3, 4, 5, 1]
+
 print()
 print(f"Solution by hashMap: {Solution.containsDuplicate(nums)}")
 print(f"Solution by BruteForce: {Solution.containsDuplicateBruteForce(nums)}")
