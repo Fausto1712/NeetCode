@@ -16,15 +16,18 @@ class Solution:
     Time complexity: O(n)
     """
     def isAnagramHashTable(self, s: str, t: str) -> bool:
-        count = defaultdict(int)
-        for i in range(0, len(s)):
-            count[s[i]] += 1
-            count[t[i]] -= 1
+        if len(s) != len(t):
+            return False
+        else:
+            count = defaultdict(int)
+            for i in range(0, len(s)):
+                count[s[i]] += 1
+                count[t[i]] -= 1
 
-        for val in count.values():
-            if val != 0:
-                return False
-        return True
+            for val in count.values():
+                if val != 0:
+                    return False
+            return True
         
 
 
