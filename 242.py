@@ -28,7 +28,11 @@ class Solution:
                 if val != 0:
                     return False
             return True
+<<<<<<< Updated upstream
 
+=======
+        
+>>>>>>> Stashed changes
 string1 = "anagram"
 string2 = "nagaram"
 
