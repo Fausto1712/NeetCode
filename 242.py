@@ -28,9 +28,6 @@ class Solution:
                 if val != 0:
                     return False
             return True
-        
-
-
 
 string1 = "anagram"
 string2 = "nagaram"
