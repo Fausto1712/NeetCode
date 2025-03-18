@@ -2,24 +2,33 @@ from typing import List
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        result = []
-        nums = sorted(nums)
-        nums2 = set(nums)
-        for k in range(0, len(nums2)-1):
-            i = 0
-            j = len(nums)-1
-            sum = nums[i] + nums[j] + nums[k]
-            while (sum != 0) and (i < j):
-                if i == k or sum < 0:
-                    i+=1
-                elif i == j or sum > 0:
-                    j-=1
-                sum = nums[i] + nums[j] + nums[k]
-            if (sum == 0) and (i != k) and (j != k) and (i != j) and (nums[k] != nums[k+1]):
-                result.append([nums[i], nums[j],nums[k]]) 
-        return result
+        nums.sort()
+        res = []
+
+        for i in range(len(nums)):
+            l = i+1
+            r = len(nums)-1
+
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+
+            while l < r:
+                currSum = nums[l] + nums[r] + nums[i]
+                if currSum < 0:
+                    l += 1
+                elif currSum > 0:
+                    r -= 1
+                else:
+                    res.append([nums[l], nums[r], nums[i]])
+                    l += 1
+                    r -= 1
+                    while nums[l] == nums[l - 1] and l < r:
+                        l += 1
+            
+        return res
+            
     
-nums = [-4,-1,-1,0,1,2]
+nums = [0,0,0,0]
 
 print()
 print(f"Solution: {Solution.threeSum(Solution,nums)}")

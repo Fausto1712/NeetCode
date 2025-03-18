@@ -1,18 +1,17 @@
 from typing import List
-class Solution:
-    def countingBites(self, characters) -> str:
-        res = ""
-        count = 1
 
-        for i in range(len(characters)-1):
-            if characters[i] != characters[i+1]:
-                res =  res + characters[i] + str(count)
-                count = 1
-            else:
-                count += 1
-        res =  res + characters[-1] + str(count)
-        return res
+class Solution:
+    def testingProblem(self, nums: List[int]) -> int:
+        total_sum = 0
+        
+        for i in range(len(nums)):
+            for j in range(i, len(nums)):
+                min_value = min(nums[i:j+1])
+                total_sum += min_value
+        
+        return total_sum
 
 if __name__ == "__main__":
     solution = Solution()
-    print(f"The solution is {solution.countingBites(["a","a","a","a","a","b","b","b","c","c","c","c"])}")
+    array = [3,1,2,4]
+    print(f"The solution is {solution.testingProblem(array)}")

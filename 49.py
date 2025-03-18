@@ -8,32 +8,14 @@ class Solution:
     group with the word on it
     Time complexity: O(n * m), where n is the total number of characters in all words and m is the number of groups
     """
-    def isAnagramHashTable(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
-        else:
-            count = defaultdict(int)
-            for i in range(0, len(s)):
-                count[s[i]] += 1
-                count[t[i]] -= 1
-
-            for val in count.values():
-                if val != 0:
-                    return False
-            return True
-        
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        groupedAnagrams = [[strs[0]]]
-        gotAdded = False
-        for i in range(1, len(strs)):
-            gotAdded = False
-            for j in range(0, len(groupedAnagrams)):
-                if Solution.isAnagramHashTable(Solution, strs[i], groupedAnagrams[j][0]):
-                    groupedAnagrams[j].append(strs[i])
-                    gotAdded = True
-            if not gotAdded: 
-                groupedAnagrams.append([strs[i]])
-        return groupedAnagrams
+        res = defaultdict(list)
+        for s in strs:
+            count = [0] * 26
+            for c in s:
+                count[ord(c) - ord('a')] += 1
+            res[tuple(count)].append(s)
+        return list(res.values())
     
     """
     Solution with Sorting and Hash, for every word sort it and use the sorted word as Hash, then append the value to the HashMap
