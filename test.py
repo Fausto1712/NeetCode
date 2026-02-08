@@ -1,17 +1,18 @@
 from typing import List
 
 class Solution:
-    def testingProblem(self, nums: List[int]) -> int:
-        total_sum = 0
-        
-        for i in range(len(nums)):
-            for j in range(i, len(nums)):
-                min_value = min(nums[i:j+1])
-                total_sum += min_value
-        
-        return total_sum
+    def testingProblem(self, n) -> int:
+        res = []
+        i = 1
+        while i * i <= n:
+            if n % i == 0:
+                res.append(i)
+                if i != n // i:
+                    res.append(n // i)
+            i += 1
+        return res
 
 if __name__ == "__main__":
     solution = Solution()
-    array = [3,1,2,4]
-    print(f"The solution is {solution.testingProblem(array)}")
+    n = 1600
+    print(f"The solution is {solution.testingProblem(n)}")
