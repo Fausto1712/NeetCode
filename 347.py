@@ -1,5 +1,6 @@
 from collections import defaultdict
 from typing import List
+import heapq
 
 class Solution:
     """
@@ -33,12 +34,29 @@ class Solution:
                 res.append(num)
                 if len(res) == k:
                     return res
+    
+    def topKFrequentHeap(self, nums: List[int], k: int) -> List[int]:
+        numSet = {}
+        heap = []
+
+        for num in nums:
+            numSet[num] = numSet.get(num, 0) + 1
+
+        for num, count in numSet.items():
+            if len(heap) < k:
+                heapq.heappush(heap, (count, num))
+            elif count > heap[0][0]:
+                heapq.heapreplace(heap, (count, num))
+
+        return [num[1] for num in heap]
 
 
-nums = [4,4,7,7,7,8,10,5,3]
+
+nums = [1,1,1,2,2,3]
 k = 2
 
 print()
 print(f"Solution by hashmap: {Solution.topKFrequent(Solution,nums, k)}")
 print(f"Solution by hashmap: {Solution.topKFrequentOpt(Solution,nums, k)}")
+print(f"Solution by hashmap: {Solution.topKFrequentHeap(Solution,nums, k)}")
 print()
